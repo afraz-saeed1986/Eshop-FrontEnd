@@ -1,0 +1,132 @@
+    <div class="darker-stripe">
+      <div class="container">
+          <div class="row">
+              <div class="span12">
+                  <ul class="breadcrumb">
+                      <li>
+                          <a [routerLink]="['']">وبمارکت</a>
+                      </li>
+                      <li><span class="icon-chevron-right"></span></li>
+                      <li>
+                          <a [routerLink]="['/register']">ثبت نام</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="container">
+      <div class="push-up top-equal blocks-spacer-last">
+          <div class="row">
+              <div class="span12">
+                  <div class="title-area">
+                      <h1 class="inline"><span class="light">ثبت </span>نام</h1>
+                  </div>
+              </div>
+              <section class="span8 single single-page">
+
+                  <hr />
+                  <section class="contact-form-container">
+
+                      <h3 class="push-down-25"><span class="light">ثبت </span>نام</h3>
+
+                      <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()" class="form form-inline form-contact">
+
+                          <p class="push-down-20">
+                            <label for="author">نام<span class="red-clr bold">*</span></label>
+                              <input type="text" tabindex="1" formControlName="firstName" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['firstName'].errors?.['required'] && registerForm.controls['firstName'].touched">
+                            لطفا نام خود را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['firstName'].errors?.['maxlength'] && registerForm.controls['firstName'].touched">
+                           تعداد کاراکتر ها نباید بیشتر از 100 باشد
+                          </p>
+
+                          <p class="push-down-20">
+                            <label for="author">نام خانوادگی<span class="red-clr bold">*</span></label>
+                              <input type="text" tabindex="2" formControlName="lastName" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['lastName'].errors?.['required'] && registerForm.controls['lastName'].touched">
+                            لطفا نام خانوادگی خود را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['lastName'].errors?.['maxlength'] && registerForm.controls['lastName'].touched">
+                            تعداد کاراکتر ها نباید بیشتر از 100 باشد
+                           </p>
+
+                          <p class="push-down-20">
+                            <label for="author">ایمیل<span class="red-clr bold">*</span></label>
+                              <input type="email" tabindex="3" formControlName="email" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched">
+                            لطفا ایمیل خود را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['email'].errors?.['maxlength'] && registerForm.controls['email'].touched">
+                            تعداد کاراکتر ها نباید بیشتر از 100 باشد
+                           </p>
+                           <p class="text-error" *ngIf="registerForm.controls['email'].errors?.['email'] && registerForm.controls['email'].touched">
+                            ایمیل وارد شده معتبر نمی باشد
+                           </p>
+
+                          <p class="push-down-20">
+                            <label for="author">کلمه عبور<span class="red-clr bold">*</span></label>
+                              <input type="password" tabindex="4" formControlName="password" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched">
+                            لطفا کلمه عبور را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['password'].errors?.['maxlength'] && registerForm.controls['password'].touched">
+                            تعداد کاراکتر ها نباید بیشتر از 100 باشد
+                           </p>
+
+                          <p class="push-down-20">
+                            <label for="author">تکرار کلمه عبور<span class="red-clr bold">*</span></label>
+                              <input type="password" tabindex="5" formControlName="confirmPassword" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['confirmPassword'].errors?.['required'] && registerForm.controls['confirmPassword'].touched">
+                            لطفا تکرار کلمه عبور را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['confirmPassword'].errors?.['maxlength'] && registerForm.controls['confirmPassword'].touched">
+                            تعداد کاراکتر ها نباید بیشتر از 100 باشد
+                           </p>
+
+                          <p class="push-down-20">
+                            <label for="author">آدرس<span class="red-clr bold">*</span></label>
+                              <input type="text" tabindex="6" formControlName="address" class="span12">
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['address'].errors?.['required'] && registerForm.controls['address'].touched">
+                            لطفا آدرس را وارد نمایید
+                          </p>
+                          <p class="text-error" *ngIf="registerForm.controls['address'].errors?.['maxlength'] && registerForm.controls['address'].touched">
+                            تعداد کاراکتر ها نباید بیشتر از 500 باشد
+                           </p>
+
+
+                          <p>
+                              <button class="btn btn-primary bold" [disabled]="registerForm.invalid" type="submit" tabindex="7" id="submit">ثبت نام</button>
+                          </p>
+                      </form>
+                  </section>
+
+              </section>
+          </div>
+      </div>
+  </div>
+
+  <swal
+  #sweetAlert
+  text="ایمیل وارد شده: {{this.registerForm.controls['email'].value}} تکراری میباشد"
+  title="اخطار"
+  icon="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true">
+</swal>
+<swal
+#successRegisterAlert
+text="عملیات ثبت نام با موفقیت انجام شد"
+title="ثبت نام"
+icon="success"
+[showCancelButton]="false"
+[focusCancel]="false">
+</swal>
