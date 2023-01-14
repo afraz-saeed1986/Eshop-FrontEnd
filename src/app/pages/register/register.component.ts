@@ -57,7 +57,7 @@ public registerForm!: FormGroup;
 
 
   submitRegisterForm(){
-    console.log(this.registerForm);
+    //console.log(this.registerForm);
     const registerData = new RegisterUserDTO(
       this.registerForm.controls["email"].value,
       this.registerForm.controls["firstName"].value,

@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  currentUser!: CurrentUserDTO;
   title = 'EShop';
 
   constructor(private authService: AuthService){}
 
   ngOnInit(): void {
-    this.authService.checkUserAuth().subscribe(res=>{
+this.authService.checkUserAuth().subscribe(res=>{
       if(res.status === 'Success'){
           const user = new CurrentUserDTO(
             res.data.userId,

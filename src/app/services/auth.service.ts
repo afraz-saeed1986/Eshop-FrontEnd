@@ -40,4 +40,8 @@ getCurrentUser(): Observable<CurrentUserDTO>{
   logOutUser(): Observable<any> {
    return this.http.get('/account/sign-out');
   }
+
+  activateUser(emailActiveCode: string): Observable<any>{
+    return this.http.get('/account/activate-account/'+ emailActiveCode);
+  }
 }

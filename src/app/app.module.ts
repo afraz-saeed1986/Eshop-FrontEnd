@@ -2,7 +2,6 @@ import { EshopInterceptor } from './utilities/EshopInterceptor';
 import { SliderService } from './services/slider.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SiteHeaderComponent } from './shared-components/site-header/site-header.component';
@@ -22,7 +21,8 @@ import { RegisterComponent } from './pages/register/register.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { CookieService } from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service';
+import { ActivatedAccountComponent } from './pages/activated-account/activated-account.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +39,9 @@ import { CookieService } from 'ngx-cookie-service'
     AboutUsComponent,
     ContactUsComponent,
     LoginComponent,
-    RegisterComponent
-  ],
+    RegisterComponent,
+    ActivatedAccountComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

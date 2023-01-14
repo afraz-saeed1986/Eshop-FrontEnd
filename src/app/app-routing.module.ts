@@ -1,3 +1,4 @@
+import { ActivatedAccountComponent } from './pages/activated-account/activated-account.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'activate-account/:activeCode', component: ActivatedAccountComponent}
 ];
 
 @NgModule({
