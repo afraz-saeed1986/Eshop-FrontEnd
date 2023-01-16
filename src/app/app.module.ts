@@ -1,3 +1,4 @@
+import { ProductsService } from './services/Products.service';
 import { EshopInterceptor } from './utilities/EshopInterceptor';
 import { SliderService } from './services/slider.service';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,9 @@ import { AuthService } from './services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedAccountComponent } from './pages/activated-account/activated-account.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { SingleProductComponent } from './shared-components/single-product/single-product.component';
+import { NgxLoadingModule } from "ngx-loading";
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import { ActivatedAccountComponent } from './pages/activated-account/activated-a
     ContactUsComponent,
     LoginComponent,
     RegisterComponent,
-    ActivatedAccountComponent
+    ActivatedAccountComponent,
+    ProductsComponent,
+    SingleProductComponent
     ],
   imports: [
     BrowserModule,
@@ -48,7 +54,10 @@ import { ActivatedAccountComponent } from './pages/activated-account/activated-a
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    NgxLoadingModule.forRoot({
+      fullScreenBackdrop: true
+    })
   ],
   providers: [
     SliderService,
@@ -58,7 +67,8 @@ import { ActivatedAccountComponent } from './pages/activated-account/activated-a
       useClass: EshopInterceptor,
       multi: true
     },
-    AuthService
+    AuthService,
+    ProductsService
 
 
   ],
