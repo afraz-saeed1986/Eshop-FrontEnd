@@ -1,3 +1,4 @@
+import { ProductOrderBy } from './ProductOrderBy';
 import { Product } from './Product';
 export class FilterProductsDTO{
   constructor(
@@ -11,6 +12,8 @@ export class FilterProductsDTO{
     public takeEntity: number,
     public skipEntity: number,
     public activePage: number,
+    public orderBy: ProductOrderBy,
+    public categories: number[],
     public products: Product[]
   ){
   }
