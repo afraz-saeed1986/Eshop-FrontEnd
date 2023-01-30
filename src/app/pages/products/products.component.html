@@ -71,13 +71,50 @@
             </div>
             <div id="filterPrices" class="accordion-body in collapse">
               <div class="accordion-inner with-slider">
-                <div class="jqueryui-slider-container">
+                <!-- <div class="jqueryui-slider-container">
                   <div id="pricesRange"></div>
                 </div>
                 <input type="text" data-initial="432" class="max-val pull-right" disabled />
-                <input type="text" data-initial="99" class="min-val" disabled />
+                <input type="text" data-initial="99" class="min-val" disabled /> -->
+                <p style="margin-top: 30px; margin-right: 25px;">
+                  <mat-slider
+                  min="0"
+                  max="100000000"
+                  step="100000"
+                  showTickMarks
+                  discrete
+                  [displayWith]="formatLabel"
+                  >
+                    <input matSliderThumb (change)="setMinPrice($event)">
+                  </mat-slider>&nbsp;
+                  <!-- <span class="min-val" disabled>{{ filterProducts.startPrice }}</span> -->
+                  از:
+                  <input type="text" class="min-val" disabled [value]="filterProducts.startPrice" />
+                 </p>
+
+                 <p style="margin-right: 25px;">
+                  <mat-slider
+                  [min]="filterProducts.startPrice"
+                  max="100000000"
+                  step="100000"
+                  showTickMarks
+                  discrete
+                  [displayWith]="formatLabel"
+                  >
+                    <input matSliderThumb (change)="setMaxPrice($event)">
+                  </mat-slider>&nbsp;
+                  <!-- <span class="min-val" disabled>{{ filterProducts.startPrice }}</span> -->
+                  به:
+                  <input type="text" class="min-val" disabled [value]="filterProducts.endPrice" />
+                 </p>
+                 <button class="btn btn-success btn-block" (click)="filterButton()">فیلتر</button>
               </div>
             </div>
+
+            <div>
+
+            </div>
+
           </div> <!-- /prices slider -->
 
           <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> حذف همه فیلتر

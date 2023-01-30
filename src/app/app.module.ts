@@ -27,6 +27,10 @@ import { ActivatedAccountComponent } from './pages/activated-account/activated-a
 import { ProductsComponent } from './pages/products/products.component';
 import { SingleProductComponent } from './shared-components/single-product/single-product.component';
 import { NgxLoadingModule } from "ngx-loading";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component'
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { NgxLoadingModule } from "ngx-loading";
     RegisterComponent,
     ActivatedAccountComponent,
     ProductsComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    ProductDetailComponent
     ],
   imports: [
     BrowserModule,
@@ -57,7 +62,10 @@ import { NgxLoadingModule } from "ngx-loading";
     SweetAlert2Module.forRoot(),
     NgxLoadingModule.forRoot({
       fullScreenBackdrop: true
-    })
+    }),
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatSliderModule
   ],
   providers: [
     SliderService,

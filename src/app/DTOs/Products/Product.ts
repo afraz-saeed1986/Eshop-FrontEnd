@@ -7,7 +7,7 @@ export class Product{
     public shortDescription: string,
     public description: string,
     public imageName: string,
-    public isExists: boolean,
+    public isExist: boolean,
     public isSpecial: boolean
   ){}
 }

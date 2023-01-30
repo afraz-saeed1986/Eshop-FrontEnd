@@ -1,0 +1,177 @@
+<div class="darker-stripe">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+          <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">وبمارکت</a>
+                </li>
+                <li><span class="icon-chevron-right"></span></li>
+                <li>
+                    <a href="shop.html">فروشگاه</a>
+                </li>
+                <li><span class="icon-chevron-right"></span></li>
+                <li>
+                    <a href="#">محصول ویژه</a>
+                </li>
+                <li><span class="icon-chevron-right"></span></li>
+                <li>
+                    <a href="product.html">تی شرت مردانه کلاه دار</a>
+                </li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="product">
+  <div class="push-up top-equal blocks-spacer">
+
+      <!--  ==========  -->
+      <!--  = Product =  -->
+      <!--  ==========  -->
+      <div class="row blocks-spacer">
+
+          <!--  ==========  -->
+          <!--  = Preview Images =  -->
+          <!--  ==========  -->
+          <div class="span5">
+              <div class="product-preview">
+                  <div class="picture">
+                      <img [src]="mainImage" [alt]="product.productName" width="940" height="940" id="mainPreviewImg">
+                  </div>
+                  <div class="thumbs clearfix" *ngIf="galleries">
+
+                  <div class="thumb" [ngClass]="{'active': selectedImageId === 0}" (click)="selectImage(0)">
+                      <a>
+                        <img [src]="imagePath + product.imageName" [alt]="product.productName" width="940" height="940">
+                      </a>
+                  </div>
+
+                  <div class="thumb" [ngClass]="{'active': selectedImageId === gallery.id}" *ngFor="let gallery of galleries"  (click)="selectImage(gallery.id)">
+                    <a>
+                      <img [src]="imageGalleryPath + gallery.imageName" [alt]="product.productName" width="940" height="940">
+                    </a>
+                </div>
+
+                      <!-- <div class="thumb" [ngClass]="{'active': isFirst}" *ngFor="let gallery of galleries; index as i; first as isFirst">
+                          <a href="#mainPreviewImg">
+                            <img [src]="imageGalleryPath + gallery.imageName" [alt]="product.productName" width="940" height="940">
+                          </a>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
+
+          <!--  ==========  -->
+          <!--  = Title and short desc =  -->
+          <!--  ==========  -->
+          <div class="span7">
+              <div class="product-title">
+                  <h1 class="name"><!--<span class="light">محصول ویژه</span>--> {{product.productName}}</h1>
+                  <div class="meta">
+                      <span class="tag">{{product.price}} تومان</span>
+                      <span class="stock">
+                          <span class="btn btn-success margin-left-10" *ngIf="product.isExist">موجود</span>
+                          <span class="btn btn-info" *ngIf="product.isSpecial">محصول ویژه</span>
+                      </span>
+                  </div>
+              </div>
+              <div class="product-description">
+                <p>
+                  {{product.shortDescription}}
+                </p>
+                  <hr>
+
+                  <!--  ==========  -->
+                  <!--  = Add to cart form =  -->
+                  <!--  ==========  -->
+                  <form action="#" class="form form-inline clearfix">
+                      <div class="numbered">
+                        <input type="text" name="num" value="1" class="tiny-size">
+                        <span class="clickable add-one icon-plus-sign-alt"></span>
+                        <span class="clickable remove-one icon-minus-sign-alt"></span>
+                      </div>
+
+                      <button class="btn btn-danger pull-right"><i class="icon-shopping-cart"></i> اضافه به سبد خرید</button>
+                  </form>
+
+                  <hr>
+
+                  <!--  ==========  -->
+                  <!--  = Share buttons =  -->
+                  <!--  ==========  -->
+                  <div class="share-item">
+                      <div class="pull-right social-networks">
+                          <!-- AddThis Button BEGIN -->
+                          <div class="addthis_toolbox addthis_default_style ">
+                          <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                          <a class="addthis_button_tweet"></a>
+                          <a class="addthis_button_pinterest_pinit"></a>
+                          <a class="addthis_counter addthis_pill_style"></a>
+                          </div>
+                          <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
+                          <!-- AddThis Button END -->
+                      </div>
+                      با دوستان خود به اشتراک بگذارید :
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+      <!--  ==========  -->
+      <!--  = Tabs with more info =  -->
+      <!--  ==========  -->
+      <div class="row">
+          <div class="span12">
+              <ul id="myTab" class="nav nav-tabs">
+                  <li class="active">
+                      <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                  </li>
+
+                  <li>
+                      <a href="#tab-2" data-toggle="tab">نظرات</a>
+                  </li>
+
+              </ul>
+              <div class="tab-content">
+                  <div class="fade in tab-pane active" id="tab-1">
+                      {{product.description}}
+                  </div>
+                  <div class="fade tab-pane" id="tab-2">
+                      <p>
+                        نظرات
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="boxed-area no-bottom">
+  <div class="container">
+
+      <!--  ==========  -->
+      <!--  = Title =  -->
+      <!--  ==========  -->
+      <div class="row" *ngIf="relatedProducts.length > 0">
+          <div class="span12">
+              <div class="main-titles lined">
+                <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+              </div>
+          </div>
+      </div>
+
+      <!--  ==========  -->
+      <!--  = Related products =  -->
+      <!--  ==========  -->
+      <div class="row popup-products">
+
+        <app-single-product [product]="product" *ngFor="let product of relatedProducts"></app-single-product>
+
+      </div>
+  </div>
+</div>

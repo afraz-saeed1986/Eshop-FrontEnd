@@ -36,6 +36,8 @@ export class ProductsComponent implements OnInit {
       console.log(this.filterProducts.categories);
 
       this.filterProducts.pageId = pageId;
+      this.filterProducts.startPrice = params['startPrice'] ? params['startPrice'] : 0 ;
+      this.filterProducts.endPrice = params['endPrice'] ? params['endPrice'] : 0;
       this.getProducts();
     });
 
@@ -105,13 +107,46 @@ export class ProductsComponent implements OnInit {
 
     switch(event.target.value){
       case ProductOrderBy.PriceAsc.toString():
-        this.router.navigate(['products'], {queryParams: {pageId: this.filterProducts.activePage, categories: this.filterProducts.categories, orderBy: 'priceAsc'}});
+        this.router.navigate(['products'],
+        {queryParams: {pageId: this.filterProducts.activePage,
+          categories: this.filterProducts.categories,
+          orderBy: 'priceAsc',
+          startPrice: this.filterProducts.startPrice.toString(),
+          endPrice: this.filterProducts.endPrice.toString()}});
         break;
         case ProductOrderBy.PriceDes.toString():
-          this.router.navigate(['products'], {queryParams: {pageId: this.filterProducts.activePage, categories: this.filterProducts.categories, orderBy: 'priceDes'}});
+          this.router.navigate(['products'],
+          {queryParams: {pageId: this.filterProducts.activePage,
+            categories: this.filterProducts.categories,
+            orderBy: 'priceDes',
+            startPrice: this.filterProducts.startPrice.toString(),
+            endPrice: this.filterProducts.endPrice.toString()}});
           break;
     }
 
+  }
+
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return `${value}`;
+  }
+
+  setMinPrice(event: any){
+    this.filterProducts.startPrice = parseInt(event.target.value, 0);
+  }
+
+  setMaxPrice(event: any){
+    this.filterProducts.endPrice = parseInt(event.target.value, 0);
+  }
+
+  filterButton(){
+    this.router.navigate(['products'],
+    {queryParams: {categories: this.filterProducts.categories,
+       startPrice: this.filterProducts.startPrice.toString(),
+       endPrice: this.filterProducts.endPrice.toString()}});
   }
 
 }

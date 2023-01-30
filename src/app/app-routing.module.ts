@@ -1,3 +1,4 @@
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ActivatedAccountComponent } from './pages/activated-account/activated-account.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'activate-account/:activeCode', component: ActivatedAccountComponent},
-  {path: 'products', component: ProductsComponent}
+  {path: 'products', component: ProductsComponent},
+  {path: 'products/:productId/:productName', component: ProductDetailComponent}
+
 ];
 
 @NgModule({
